@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Elite V1 Level 3</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <div id="app">
+  <audio id="bg-music" loop preload="auto">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+  </audio>
+
+  <canvas id="gameCanvas"></canvas>
+
+  <div id="ui">
+    <div id="hud" class="hidden">
+      <div class="hud-left">
+        <div class="hud-pill" id="hud-level">Level 1</div>
+        <div class="hud-pill" id="hud-distance">0m / 12,000m</div>
+        <div class="hud-pill" id="hud-biome">Blue Open Sea</div>
+      </div>
+
+      <div class="hud-center">
+        <div class="hud-big" id="hud-lives">Lifelines: 3</div>
+        <div class="hud-big gold" id="hud-score">Score: 0 / 10</div>
+        <div class="hud-small" id="hud-combo">Combo: x1</div>
+        <div class="hud-small cyan" id="hud-power">Power-Up: None</div>
+      </div>
+
+      <div class="hud-right">
+        <button id="pause-btn" class="mini-btn">Pause</button>
+      </div>
+    </div>
+
+    <div id="boss-hud" class="hidden">
+      <div id="boss-label" class="boss-label">Golden Sea Guardian</div>
+      <div id="boss-hp-text" class="boss-hp-text">Boss HP: 20 / 20</div>
+      <div class="boss-bar-wrap">
+        <div id="boss-bar"></div>
+      </div>
+    </div>
+
+    <div id="menu-screen" class="screen">
+      <div class="panel hero">
+        <div class="eyebrow">Premium 3-Level Ocean Combat Game</div>
+        <h1>Golden Tide: Ocean Blitz</h1>
+        <p class="lead">
+          Clear Level 1 and Level 2 to unlock the new third premium level. Fight through six mythic ocean biomes,
+          destroy enemy fish, snakes, crocodiles, turtles, octopus, dragons, space giants, oceanic spaceships,
+          collect power-ups and lifelines, and defeat the Guardian Boss of each mission.
+        </p>
+
+        <div class="brief-grid">
+          <div class="brief-card">
+            <div class="brief-title">Level 1</div>
+            <div class="brief-copy">Standard combat run with the Golden Sea Guardian.</div>
+          </div>
+          <div class="brief-card">
+            <div class="brief-title">Level 2</div>
+            <div class="brief-copy">Golden mission unlocked after clearing Level 1.</div>
+          </div>
+          <div class="brief-card">
+            <div class="brief-title">Level 3</div>
+            <div class="brief-copy">Premium danger mode unlocked after clearing the first two levels.</div>
+          </div>
+        </div>
+
+        <div class="boat-title">Choose Your Mission Level</div>
+        <div class="boat-grid">
+          <button id="boat-standard" class="boat-card selected">
+            <span class="boat-name">Level 1: Standard Battle Boat</span>
+            <span class="boat-copy">Balanced opening combat mission</span>
+          </button>
+
+          <button id="boat-golden" class="boat-card locked" disabled>
+            <span class="boat-name">Level 2: Golden Unlock Boat</span>
+            <span class="boat-copy">Unlocked after beating Level 1</span>
+          </button>
+
+          <button id="boat-third" class="boat-card locked" disabled>
+            <span class="boat-name">Level 3: Inferno Premium Ocean</span>
+            <span class="boat-copy">Unlocked after beating Level 1 and Level 2</span>
+          </button>
+        </div>
+
+        <div id="menu-status" class="menu-status">Level 3 is locked. Clear Level 1 and Level 2 to unlock the premium third level.</div>
+
+        <div class="menu-actions">
+          <button id="start-btn" class="primary-btn">Start Mission</button>
+          <button id="sound-btn" class="secondary-btn">Sound: On</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="pause-screen" class="screen hidden">
+      <div class="panel small">
+        <div class="eyebrow">Paused</div>
+        <h2>Hold Position</h2>
+        <p class="lead small-lead">Resume your run, restart the mission, or return to command.</p>
+        <div class="stack-actions">
+          <button id="pause-resume" class="primary-btn">Resume</button>
+          <button id="pause-restart" class="secondary-btn">Restart Run</button>
+          <button id="pause-menu" class="secondary-btn">Return To Menu</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="end-screen" class="screen hidden">
+      <div class="panel small">
+        <div id="end-eyebrow" class="eyebrow">Mission Complete</div>
+        <h2 id="end-title">Victory</h2>
+        <p id="end-subtitle" class="lead small-lead"></p>
+        <div id="end-stats" class="end-stats"></div>
+        <div id="end-unlock" class="unlock-note"></div>
+        <div class="stack-actions">
+          <button id="end-restart" class="primary-btn">Play Again</button>
+          <button id="end-menu" class="secondary-btn">Back To Menu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="desktop-controls" class="hidden">
+    <button id="btn-fire-desktop" class="fire-btn desktop-fire">FIRE</button>
+  </div>
+
+  <div id="mobile-controls" class="hidden">
+    <div class="mobile-left-stack">
+      <button id="mob-up" class="mobile-ctrl forward-btn">▲</button>
+      <button id="mob-down" class="mobile-ctrl backward-btn">▼</button>
+    </div>
+
+    <div class="mobile-right-stack">
+      <button id="btn-fire-mobile" class="fire-btn mobile-fire">FIRE</button>
+      <div class="mobile-turn-row">
+        <button id="mob-left" class="mobile-ctrl left-btn">◀</button>
+        <button id="mob-right" class="mobile-ctrl right-btn">▶</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
