@@ -3110,7 +3110,21 @@ pauseResumeBtn.addEventListener("click", () => {
 });
 
 pauseRestartBtn.addEventListener("click", () => {
-  startGame();
+
+  const callbacks = {
+    adFinished: () => {
+      console.log("End midgame ad");
+      startGame(); // ▶ restart AFTER ad
+    },
+    adError: (error) => {
+      console.log("Error midgame ad", error);
+      startGame(); // ▶ still restart if ad fails
+    },
+    adStarted: () => console.log("Start midgame ad"),
+  };
+
+  window.CrazyGames.SDK.ad.requestAd("midgame", callbacks);
+
 });
 
 pauseMenuBtn.addEventListener("click", () => {
