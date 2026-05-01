@@ -3100,36 +3100,11 @@ pauseMenuBtn.addEventListener("click", () => {
 });
 
 endRestartBtn.addEventListener("click", () => {
-
-  const callbacks = {
-    adFinished: () => startGame(),
-    adError: () => startGame(),
-    adStarted: () => console.log("Start midgame ad"),
-  };
-
-  window.CrazyGames.SDK.ad.requestAd("midgame", callbacks);
-  
-// ✅ Fallback (IMPORTANT)
-  setTimeout(() => {
-    if (!done) startGame();
-  }, 1500);
+  startGame();
 });
 
 endMenuBtn.addEventListener("click", () => {
-
-  const callbacks = {
-    adFinished: () => returnToMenu(),   // go to menu AFTER ad
-    adError: () => returnToMenu(),      // fallback if ad fails
-    adStarted: () => console.log("Start midgame ad"),
-  };
-
-  window.CrazyGames.SDK.ad.requestAd("midgame", callbacks);
-  
-  // ✅ Fallback
-  setTimeout(() => {
-    if (!done) returnToMenu();
-  }, 1500);
-  
+  returnToMenu();
 });
 
 boatStandardBtn.addEventListener("click", () => {
