@@ -3108,7 +3108,11 @@ endRestartBtn.addEventListener("click", () => {
   };
 
   window.CrazyGames.SDK.ad.requestAd("midgame", callbacks);
-
+  
+// ✅ Fallback (IMPORTANT)
+  setTimeout(() => {
+    if (!done) startGame();
+  }, 1500);
 });
 
 endMenuBtn.addEventListener("click", () => {
@@ -3120,7 +3124,12 @@ endMenuBtn.addEventListener("click", () => {
   };
 
   window.CrazyGames.SDK.ad.requestAd("midgame", callbacks);
-
+  
+  // ✅ Fallback
+  setTimeout(() => {
+    if (!done) returnToMenu();
+  }, 1500);
+  
 });
 
 boatStandardBtn.addEventListener("click", () => {
