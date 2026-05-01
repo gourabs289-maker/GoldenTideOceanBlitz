@@ -3087,45 +3087,13 @@ soundBtn.addEventListener("click", () => {
   }
 });
 
-pauseBtn.addEventListener("click", () => {
-  if (game.state === "playing") {
-
-    togglePause(); // pause first
-
-    // ✅ Ad only when going from playing → paused
-    const callbacks = {
-      adFinished: () => console.log("End midgame ad"),
-      adError: (error) => console.log("Error midgame ad", error),
-      adStarted: () => console.log("Start midgame ad"),
-    };
-    window.CrazyGames.SDK.ad.requestAd("midgame", callbacks);
-
-  } else if (game.state === "paused") {
-    togglePause(); // resume (NO ad)
-  }
-});
+pauseBtn.addEventListener("click", () => { if (game.state === "playing" || game.state === "paused") togglePause(); });
 
 pauseResumeBtn.addEventListener("click", () => {
   if (game.state === "paused") togglePause();
 });
 
-pauseRestartBtn.addEventListener("click", () => {
-
-  const callbacks = {
-    adFinished: () => {
-      console.log("End midgame ad");
-      startGame(); // ▶ restart AFTER ad
-    },
-    adError: (error) => {
-      console.log("Error midgame ad", error);
-      startGame(); // ▶ still restart if ad fails
-    },
-    adStarted: () => console.log("Start midgame ad"),
-  };
-
-  window.CrazyGames.SDK.ad.requestAd("midgame", callbacks);
-
-});
+pauseRestartBtn.addEventListener("click", () => { startGame(); });
 
 pauseMenuBtn.addEventListener("click", () => {
   returnToMenu();
