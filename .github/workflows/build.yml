@@ -1,5 +1,4 @@
 name: Build Offline APK and AAB
-
 on: [workflow_dispatch]
 
 jobs:
